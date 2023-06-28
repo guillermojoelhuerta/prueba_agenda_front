@@ -1,0 +1,29 @@
+<div>    
+    <form [formGroup]="editarContacto">                    
+        <div class="mb-3">                               
+            <label for="telefono" class="form-label">Número de teléfono:</label>
+            <input type="number" formControlName="telefono"   name="telefono" id="telefono" class="form-control" />                                                                            
+            <div *ngIf="editarContacto.controls['telefono'].invalid">
+                <div *ngIf="editarContacto.controls['telefono'].errors?.['required']" class="text-danger">El número de teléfono es requerido.</div>
+                <div *ngIf="editarContacto.controls['telefono'].errors?.['pattern']" class="text-danger">El número de teléfono debe tener 10 dígitos y debe ser númerico.</div>
+            </div>          
+        </div>              
+        <div class="mb-3">          
+            <label for="nombre" class="form-label">Nombre:</label>
+            <input type="text" formControlName="nombre" name="nombre" id="nombre" class="form-control" />
+            <div *ngIf="editarContacto.controls['nombre'].invalid">             
+                <div *ngIf="editarContacto.controls['nombre'].errors?.['required']" class="text-danger">El nombre es requerido.</div>
+            </div>
+        </div>                          
+        <div class="mb-3">          
+            <label for="direccion" class="form-label">Direccion:</label>
+            <input type="text" formControlName="direccion"  name="direccion" id="direccion" class="form-control" />
+            <div *ngIf="editarContacto.controls['direccion'].invalid">
+                <div *ngIf="editarContacto.controls['direccion'].errors?.['required']" class="text-danger">La dirección es requerida.</div>
+            </div>          
+        </div>                                                                         
+        <div class="mb-3">                                                            
+            <button type="submit" class="btn btn-primary" [disabled]="editarContacto.invalid"  (click)="enviarForm()">Guardar</button>          
+        </div>
+    </form>        
+</div>

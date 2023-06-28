@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="row">
+      <div class="col">
+        Id
+      </div>
+      <div class="col">
+        Teléfono
+      </div>
+      <div class="col">
+        Nombre
+      </div>                                
+      <div class="col">
+        Dirección
+      </div>
+      <div class="col">
+        Actualizar
+      </div>
+      <div class="col">
+        Eliminar
+      </div>
+    </div>      
+    <div *ngFor="let item of contactos; let indice = index" class="row">
+        <div class="col">       
+            {{ indice+1 }} 
+        </div>
+        <div class="col">                          
+          {{ item.telefono }}               
+        </div>                                    
+        <div class="col">
+            {{ item.nombre }}       
+        </div>
+        <div class="col">
+            {{ item.direccion }}
+        </div>
+        <div class="col">                        
+            <a [routerLink]="['/agenda/editar-contacto/'+item.telefono]">
+                <img src="assets/actualizar.png" alt="Actualizar" width="25" height="25"/>
+            </a>                          
+        </div>                    
+        <div class="col">                                                                                                                                                
+            <a href="javascript:" (click)="deleteContacto(indice, item.telefono)" alt="Actualizar"  width="25" height="25">
+                <img src="assets/eliminar.png" alt="Actualizar"  width="25" height="25"/>           
+            </a>                                                                                                
+        </div>
+    </div>
+</div>
